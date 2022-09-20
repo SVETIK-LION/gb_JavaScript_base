@@ -19,8 +19,8 @@
 -->
 <script>
   "use strict";
-  function ProductES5(product_name, price) {
-    this.product_name = product_name;
+  function ProductES5(productName, price) {
+    this.productName = productName;
     this.price = price;
   }
 
@@ -30,8 +30,8 @@
 
 
   class ProductES6 {
-    constructor(product_name, price) {
-        this.product_name = product_name;
+    constructor(productName, price) {
+        this.productName = productName;
         this.price = price;
     }
 
@@ -43,11 +43,11 @@
 
 const prodES5 = new ProductES5('IPhone', 100500);
 prodES5.make25Discount();
-console.log(`Товар: ${prodES5.product_name}, цена со скидкой: ${prodES5.price}`);
+console.log(`Товар: ${prodES5.productName}, цена со скидкой: ${prodES5.price}`);
 
 const prodES6 = new ProductES6('MacBook', 200500);
 prodES6.make25Discount();
-console.log(`Товар: ${prodES6.product_name}, цена со скидкой: ${prodES6.price}`);
+console.log(`Товар: ${prodES6.producName}, цена со скидкой: ${prodES6.price}`);
 
 </script>
 </body>
