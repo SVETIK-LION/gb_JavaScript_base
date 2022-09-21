@@ -50,7 +50,7 @@
 <script>
   "use strict";
 
-
+// ES5
   // Определяем функцию-конструктор для класса поста
   function PostES5(author, text) {
     this.author = author;
@@ -59,30 +59,81 @@
   }
 
   // Делаем функцию для редактирования поста и запис. ее в прототип для наследования
-  PostES5.prototipe.edit = function(text) {
+  PostES5.prototype.edit = function(text) {
     this.text = text;
-    this.dateTime = new Date();
-  }
+    this.updatedAt = new Date();
+  };
 
-  // Делаем функцию-конструктор для класса закрепленного поста, наследуем чвойства от кл. поста
+  // Делаем функцию-конструктор для класса закрепленного поста, наследуем cвойства от кл. поста
   function AttachedPostES5(author, text) {
     this.highlighted = false;
     PostES5.call(this, author, text);
   }
+    // Наследуем методы из класса поста
+    AttachedPostES5.prototype = Object.create(PostES5.prototype);
 
-    AttachedPostES5.prototipe = Object.create(PostES5.prototipe);
-
+    // Создаем функцию, которая подсвечивает закрепленный пост
     AttachedPostES5.prototype.makeTextHighlighted = function() {
-        highlighted = true;
+    this.highlighted = true;
+    this.updatedAt = new Date();
+  };
+
+
+  const postES5 = new PostES5('Miura', 'текст поста');
+  console.log(postES5);
+  postES5.edit('Измененный текст');
+  console.log(postES5);
+  
+  const attachedES5 = new AttachedPostES5('Svetik', 'It is the my attached text');
+  console.log(attachedES5);
+  attachedES5.makeTextHighlighted();
+  attachedES5.edit('it is the NEW my attached text');
+  console.log(attachedES5);
+
+
+// ES6
+  //Определяем класс поста
+  class PostES6 {
+    constructor(author, text) {
+      this.author = author;
+      this.text = text;
     }
 
+    // Создаем функцию, которая меняет текст поста
+    edit(text) {
+      this.text = text;
+      this.DateTime = new Date();
+  }
+}
 
+  // Определяем класс для закрепленного поста
+  class AttachedPostES6 extends PostES6 {
+    highlighted = false;
 
+    makeTextHighlighted() {
+      this.highlighted = true;
+      this.date = new Date();
+    }
+  
 
+    // Методы у нас автоматически наследовались от класса-родителя.
+    // Создаем функцию, которая подсвечивает закрепленный пост
+    AttachedPostES6() {
+      highlighted = true;
+    }
+  }
+  
 
-    
+  const postES6 = new PostES6('Ulana', 'Текст');
+  console.log(postES6);
+  postES6.edit('Новый текст');
+  console.log(postES6);
 
-
+  const attachedPostES6 = new AttachedPostES6('LaNa', 'Текст поста');
+  console.log(attachedPostES6);
+  attachedPostES6.makeTextHighlighted();
+  attachedPostES6.edit('Новый текст поста');
+  console.log(attachedPostES6);
 </script>
 </body>
 </html>
