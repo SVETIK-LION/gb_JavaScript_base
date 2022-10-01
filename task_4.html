@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Необязательное задание.
+
+Необходимо реализовать функцию-конструктор Rectangle.
+-->
+<script>
+  "use strict";
+
+  /*
+   * Создает прямоугольник. Содержит меод getArea() для нахождения
+   * площади этого прямоугольника.
+   * @param {number} width - Ширина прямоугольника
+   * @param {number} height - Высота прямоугольника
+   * @return {Rectangle} - Возвращает объект прямоугольник
+   */
+  
+  function Rectangle(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+
+  Rectangle.prototype.getArea = function() {
+    return this.width * this.height;
+  };
+
+  const r = new Rectangle(44, 34);
+  console.log(r.width); // 44
+  console.log(r.height); // 34
+  console.log(r.getArea()); // 1496
+
+</script>
+</body>
+</html>
